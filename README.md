@@ -14,8 +14,10 @@ so all help/criticism is welcome and appreciated!
 ### Commands:
 
 * enderhands
-    * Function: controls whether or not a player has the ability to pick up blocks as they are (similar to silk touch)
-    * syntax: /enderhands <>targets {true|false|toggle}
+    * **Function:** sets the value of the specified targets' enderhands value
+    * **Description:** the enderhands power causes all block mined without an item the player's main hand will drop as is 
+      (e.g. grass block will drop a grass block, stone will drop stone)
+    * **Syntax:** /enderhands targets {true|false|toggle}
     
 ## Future Plans
 
