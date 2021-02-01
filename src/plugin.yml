@@ -1,0 +1,11 @@
+main: me.DirkWind.EnderPlayers.Main
+name: EnderPlayers
+version: 0.1.1
+author: DirkWind
+api-version: 1.16
+
+commands:
+  enderhands:
+      description: Sets a player's enderhands value. A value of true means that a player's fist will have the properties
+        of a silk touch diamon pickaxe, somewhat like an enderman.
+      usage: /enderhands <target> {true|false|toggle}
