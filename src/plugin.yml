@@ -6,6 +6,6 @@ api-version: 1.16
 
 commands:
   enderhands:
-      description: Sets a player's enderhands value. A value of true means that a player's fist will have the properties
-        of a silk touch diamon pickaxe, somewhat like an enderman.
+      description: Sets a player's enderhands value. A value of true means that all blocks considered solid by the spigot
+        api will be dropped as their exact block (e.g. grass block will drop grass block), somewhat like an enderman.
       usage: /enderhands <target> {true|false|toggle}
