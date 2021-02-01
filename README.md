@@ -7,7 +7,7 @@ so all help/criticism is welcome and appreciated!
 
 ### Download the Plugin
 
-Click this link to download the latest version:
+[Click here][plugin jar] to download the latest version.
 
 ## Features
 
@@ -24,3 +24,5 @@ Click this link to download the latest version:
 * add player teleportation feature
 * add player water damage feature
 * add config file for plugin customization
+
+[plugin jar]: (https://github.com/dirkwind/EnderPlayers/raw/main/out/artifacts/EnderPlayersPlugin/EnderPlayersPlugin.jar)
