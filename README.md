@@ -1,13 +1,13 @@
 # EnderPlayers Minecraft Plugin
 
 This is a plugin inspired by [Ranboo's](https://twitter.com/Ranboosaysstuff) character from the DreamSMP. He has the
-unique ability to pick up block's similar to an Enderman. Download will likely be moved to the [SpigotMC website](spigotmc.org)
+unique ability to pick up block's similar to an Enderman. Download will likely be moved to the [SpigotMC website](https://spigotmc.org)
 once the plugin is completely finished. This is my first somewhat legitimate plugin and github repository 
 so all help/criticism is welcome and appreciated!
 
 ### Download the Plugin
 
-[Click here](https://github.com/dirkwind/EnderPlayers/raw/main/out/artifacts/EnderPlayersPlugin/EnderPlayersPlugin.jar) to download the latest version.
+[Click here](https://github.com/dirkwind/EnderPlayers/raw/main/PluginJar/EnderPlayersPlugin.jar) to download the latest version.
 
 ## Features
 
