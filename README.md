@@ -7,7 +7,7 @@ so all help/criticism is welcome and appreciated!
 
 ### Download the Plugin
 
-[Click here](https://github.com/dirkwind/EnderPlayers/raw/main/PluginJar/EnderPlayersPlugin.jar) to download the latest version.
+[Click here](https://github.com/dirkwind/EnderPlayers/raw/main/PluginJar/EnderPlayers.jar) to download the latest version.
 
 ## Features
 
