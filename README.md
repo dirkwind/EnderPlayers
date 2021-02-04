@@ -30,7 +30,7 @@ so all help/criticism is welcome and appreciated!
     * **Purpose:** used to allow players with the enderteleport power to teleport
     * **Crafting:** this item is crafted using 2 sticks and an ender pearl.
         
-        ![TP Stick Recipe](/assets/tpstick_recipe.PNG)
+        <img src="./assets/tpstick_recipe.PNG" alt="TP Stick Recipe" width="150" height="150">
     
 ## Future Plans
 
