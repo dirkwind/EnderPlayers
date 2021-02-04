@@ -9,3 +9,7 @@ commands:
       description: Sets a player's enderhands value. A value of true means that all blocks considered solid by the spigot
         api will be dropped as their exact block (e.g. grass block will drop grass block), somewhat like an enderman.
       usage: /enderhands <target> {true|false|toggle}
+  enderteleport:
+      description: Sets a player's enderteleport value. When true, a player holding a TP Stick can teleport to wherever
+        they look.
+      usage: /enderteleport <target> {true|false|toggle}

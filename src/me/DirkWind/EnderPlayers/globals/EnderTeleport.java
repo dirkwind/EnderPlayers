@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import java.io.*;
 import java.util.UUID;
 
-public class EnderHands {
+public class EnderTeleport {
 
-    private static String fileName = "enderhands.yml";
+    private static final String fileName = "enderteleport.yml";
     private static File enderTeleportFile = new File(Main.getInstance().getDataFolder(), fileName);
     private static FileConfiguration enderTeleport = YamlConfiguration.loadConfiguration(enderTeleportFile);
 

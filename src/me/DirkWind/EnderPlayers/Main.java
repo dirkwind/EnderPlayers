@@ -1,13 +1,15 @@
 package me.DirkWind.EnderPlayers;
 
 import me.DirkWind.EnderPlayers.commands.EnderHandCommand;
+import me.DirkWind.EnderPlayers.commands.EnderTeleportCommand;
 import me.DirkWind.EnderPlayers.globals.EnderHands;
 import me.DirkWind.EnderPlayers.listeners.EnderHandListener;
-import me.DirkWind.EnderPlayers.tab_completers.EnderHandTabCompleter;
+import me.DirkWind.EnderPlayers.listeners.EnderTeleportListener;
+import me.DirkWind.EnderPlayers.recipes.TPStickRecipe;
+import me.DirkWind.EnderPlayers.tab_completers.EnderCommandsTabCompleter;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Main extends JavaPlugin {
@@ -29,7 +31,11 @@ public class Main extends JavaPlugin {
         }
         new EnderHandCommand(this);
         new EnderHandListener(this);
-        new EnderHandTabCompleter(this);
+        new EnderCommandsTabCompleter(this);
+
+        new EnderTeleportListener(this);
+        new EnderTeleportCommand(this);
+        new TPStickRecipe(this);
     }
 
     public void onDisable() {

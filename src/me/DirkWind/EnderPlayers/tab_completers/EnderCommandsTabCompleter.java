@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class EnderHandTabCompleter implements TabCompleter {
+public class EnderCommandsTabCompleter implements TabCompleter {
 
     private Main plugin;
 
-    public EnderHandTabCompleter(Main plugin) {
+    public EnderCommandsTabCompleter(Main plugin) {
         this.plugin = plugin;
         this.plugin.getCommand("enderhands").setTabCompleter(this);
+        this.plugin.getCommand("enderteleport").setTabCompleter(this);
     }
 
     @Override
