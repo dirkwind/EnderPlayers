@@ -3,11 +3,16 @@ package me.DirkWind.EnderPlayers.utils;
 import me.DirkWind.EnderPlayers.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.LightningStrike;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CommandUtils {
@@ -18,6 +23,18 @@ public class CommandUtils {
     public CommandUtils(Main plugin, String commandName) {
         this.commandName = commandName;
         this.plugin = plugin;
+    }
+
+    public static void givePlayerItem(Player p, ItemStack item) {
+        if (p.getInventory().firstEmpty() == -1) {
+            Location loc = p.getLocation();
+            World world = p.getWorld();
+
+            world.dropItemNaturally(loc, item);
+
+        } else {
+            p.getInventory().addItem(item);
+        }
     }
 
     public Set<Player> getTargets(CommandSender sender, String target) {
@@ -53,15 +70,9 @@ public class CommandUtils {
             }
 
         } else if (target.equalsIgnoreCase("@r")) { // Random player target
-            int item = (int) (Math.random() * plugin.getServer().getOnlinePlayers().size());
-            int i = 0;
-            for (Player p : plugin.getServer().getOnlinePlayers()) {
-                if (i == item) {
-                    targets.add(p);
-                    break;
-                }
-                i++;
-            }
+            ArrayList<Player> onlinePlayers = new ArrayList<>(plugin.getServer().getOnlinePlayers());
+            int item = (int) (Math.random() * onlinePlayers.size());
+            targets.add(onlinePlayers.get(item));
 
         } else if (target.equalsIgnoreCase("@s")) { // Self target
             if (!(sender instanceof Player)) {

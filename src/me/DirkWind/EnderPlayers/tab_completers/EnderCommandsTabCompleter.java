@@ -18,6 +18,8 @@ public class EnderCommandsTabCompleter implements TabCompleter {
         this.plugin = plugin;
         this.plugin.getCommand("enderhands").setTabCompleter(this);
         this.plugin.getCommand("enderteleport").setTabCompleter(this);
+        this.plugin.getCommand("tpstick").setTabCompleter(this);
+        this.plugin.getCommand("enderplayer").setTabCompleter(this);
     }
 
     @Override
@@ -32,7 +34,8 @@ public class EnderCommandsTabCompleter implements TabCompleter {
             }
             arguments.addAll(Arrays.asList("@a", "@r", "@s", "@p"));
         } else if (args.length == 2) {
-            arguments.addAll(Arrays.asList("true", "false", "toggle"));
+            arguments.addAll(Arrays.asList("true", "false"));
+            if (!label.equals("enderplayer")) arguments.add("toggle");
             argIndex = 1;
         }
 

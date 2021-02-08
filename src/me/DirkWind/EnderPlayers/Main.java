@@ -1,8 +1,9 @@
 package me.DirkWind.EnderPlayers;
 
-import me.DirkWind.EnderPlayers.commands.EnderHandCommand;
-import me.DirkWind.EnderPlayers.commands.EnderTeleportCommand;
+import me.DirkWind.EnderPlayers.commands.*;
+import me.DirkWind.EnderPlayers.globals.Config;
 import me.DirkWind.EnderPlayers.globals.EnderHands;
+import me.DirkWind.EnderPlayers.globals.EnderTeleport;
 import me.DirkWind.EnderPlayers.listeners.EnderHandListener;
 import me.DirkWind.EnderPlayers.listeners.EnderTeleportListener;
 import me.DirkWind.EnderPlayers.recipes.TPStickRecipe;
@@ -22,20 +23,34 @@ public class Main extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
+        Config config = new Config();
         try {
-            EnderHands.load();
+            EnderHands.save();
+            EnderTeleport.save();
+            config.loadDefaults();
             this.getServer().broadcastMessage(String.format("%s %s", ChatColor.GREEN + "Enderhands",
                     ChatColor.GOLD + "data loaded successfully."));
         } catch (IOException e) {
-            this.getServer().broadcastMessage(ChatColor.RED + "Error while loading enderHands data.");
+            e.printStackTrace();
         }
+
+        new EnderPlayerCommand(this);
+
+        // enderhands stuff
         new EnderHandCommand(this);
         new EnderHandListener(this);
-        new EnderCommandsTabCompleter(this);
 
+        // enderteleport stuff
         new EnderTeleportListener(this);
         new EnderTeleportCommand(this);
         new TPStickRecipe(this);
+        new TPStickCommand(this);
+
+        // reload command
+        new ReloadCommand(this);
+
+        // the tab completer for most commands
+        new EnderCommandsTabCompleter(this);
     }
 
     public void onDisable() {

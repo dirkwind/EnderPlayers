@@ -1,20 +1,28 @@
 package me.DirkWind.EnderPlayers.items;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import me.DirkWind.EnderPlayers.globals.Config;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Hash;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
-
 public class TPStickItem {
 
-    private static final String itemName = ChatColor.GOLD + "" + ChatColor.BOLD + "TP Stick";
+
     private static TPStickItem instance = null;
+    private Config config;
+
+    public TPStickItem() {
+        config = Config.getInstance();
+    }
 
     public static TPStickItem getInstance() {
         if (instance == null) {
@@ -24,12 +32,16 @@ public class TPStickItem {
         return instance;
     }
 
-    public boolean equals(ItemStack item) {
-        if (item != null)
-            if (item.getItemMeta() != null)
-                if (item.getItemMeta().getDisplayName().equals(itemName)) {
-                    return true;
-                }
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ItemStack)) {
+            return false;
+        }
+        ItemStack item = (ItemStack) obj;
+        if (item.getItemMeta() != null) {
+            if (item.getItemMeta().hasCustomModelData()) {
+                return item.getItemMeta().getCustomModelData() == 7837;
+            }
+        }
         return false;
     }
 
@@ -38,12 +50,12 @@ public class TPStickItem {
         ItemStack boots = new ItemStack(Material.STICK);
         ItemMeta meta = boots.getItemMeta();
 
-        meta.setDisplayName(itemName);
+        meta.setDisplayName(config.getTPStickName());
 
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "Allows you to teleport if capable.");
+        List<String> lore = new ArrayList<>(config.getTPStickLore());
         meta.setLore(lore);
 
+        meta.setCustomModelData(7837);
         meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
         meta.setUnbreakable(true);

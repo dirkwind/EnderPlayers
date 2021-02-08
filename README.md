@@ -13,17 +13,30 @@ so all help/criticism is welcome and appreciated!
 
 ### Commands:
 
+* **enderplayer**
+    * **Function:** gives the specified target(s)'s every power in this plugin (or, rather, the ones specified in the config file)
+    * **Description:** the enderplayers power is a culmination of every other power and is the closest a player can be to being an enderman
+    * **Syntax:** /enderplayer \<targets> {true|false|toggle}
 * **enderhands**
     * **Function:** sets the value of the specified target(s)'s enderhands value
     * **Description:** the enderhands power causes all block mined without an item the player's main hand will drop as is 
       (e.g. grass block will drop a grass block, stone will drop stone)
-    * **Syntax:** /enderhands targets {true|false|toggle}
+    * **Syntax:** /enderhands \<targets> {true|false|toggle}
 * **enderteleport**
     * **Function:** sets the value of the specified target(s)'s enderteleport value
     * **Description:** the enderteleport power allows a player holding a ***TP Stick*** in their main hand to teleport wherever
       they look by pressing their interact button.
-    * **Syntax:** /enderteleport targets {true|false|toggle}
-    
+    * **Syntax:** /enderteleport \<targets> {true|false|toggle}
+    * **Aliases:** /endertp
+* **tpstick**
+    * **Function:** gives the targeted players a TP Stick
+    * **Description:** the TP Stick is detailed elsewhere
+    * **Syntax:** /tpstick \<targets>
+* **epreload**
+    * **Function:** reloads this plugin's config file
+    * **Description:** Reloads the data files for the EnderPlayers plugin.
+    * **Syntax:** /epreload
+
 ### Items:
 
 * **TP Stick**
@@ -38,4 +51,5 @@ so all help/criticism is welcome and appreciated!
 
 * ~~add player teleportation feature~~ *(completed)*
 * add player water damage feature
-* add config file for plugin customization
+* add feature that allows enderplayers to safely look at the eyes of endermen
+* ~~add config file for plugin customization~~ *(completed)*

@@ -5,11 +5,22 @@ author: DirkWind
 api-version: 1.16
 
 commands:
+  enderplayer:
+    description: gives the target every enderman abilities (or, at least, the ones specified in the config file)
+      available in this plugin
+    usage: /enderplayer <targets> {true|false}
   enderhands:
-      description: Sets a player's enderhands value. A value of true means that all blocks considered solid by the spigot
-        api will be dropped as their exact block (e.g. grass block will drop grass block), somewhat like an enderman.
-      usage: /enderhands <target> {true|false|toggle}
+    description: Sets a player's enderhands value. A value of true means that all blocks considered solid by the spigot
+      api will be dropped as their exact block (e.g. grass block will drop grass block), somewhat like an enderman.
+    usage: /enderhands <targets> {true|false|toggle}
   enderteleport:
-      description: Sets a player's enderteleport value. When true, a player holding a TP Stick can teleport to wherever
-        they look.
-      usage: /enderteleport <target> {true|false|toggle}
+    description: Sets a player's enderteleport value. When true, a player holding a TP Stick can teleport to wherever
+      they look.
+    usage: /enderteleport <targets> {true|false|toggle}
+    aliases: [endertp]
+  tpstick:
+    description: Gives the TP Stick item to the specified targets
+    usage: /tpstick <targets>
+  epreload:
+    description: Reloads the data files for the EnderPlayers plugin.
+    usage: /epreload

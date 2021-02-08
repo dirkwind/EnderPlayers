@@ -2,6 +2,7 @@ package me.DirkWind.EnderPlayers.commands;
 
 import me.DirkWind.EnderPlayers.Main;
 import me.DirkWind.EnderPlayers.globals.Config;
+import me.DirkWind.EnderPlayers.globals.EnderHands;
 import me.DirkWind.EnderPlayers.globals.EnderTeleport;
 import me.DirkWind.EnderPlayers.items.TPStickItem;
 import me.DirkWind.EnderPlayers.utils.CommandUtils;
@@ -15,16 +16,19 @@ import org.bukkit.inventory.ItemStack;
 import java.io.IOException;
 import java.util.*;
 
-public class EnderTeleportCommand implements CommandExecutor {
+public class EnderPlayerCommand implements CommandExecutor {
 
     private final Main plugin;
-    private final String syntaxGuide = "/enderteleport <target> {true|false|toggle}";
+    private final String syntaxGuide = "/enderplayer <target> {true|false}";
+    private final String incorrectSyntaxMessage = ChatColor.RED + "Invalid syntax; correct syntax is: " + syntaxGuide;
+    private final Config config;
     private final CommandUtils cu;
 
-    public EnderTeleportCommand(Main plugin) {
+    public EnderPlayerCommand(Main plugin) {
         this.plugin = plugin;
-        this.plugin.getCommand("enderteleport").setExecutor(this);
-        cu = new CommandUtils(plugin, "enderteleport");
+        this.plugin.getCommand("enderplayer").setExecutor(this);
+        config = Config.getInstance();
+        cu = new CommandUtils(plugin, "enderplayer");
     }
 
     @Override
@@ -37,9 +41,8 @@ public class EnderTeleportCommand implements CommandExecutor {
                 String action = args[1];
                 Set<Player> targets = cu.getTargets(sender, target);
 
-                if (!(action.equalsIgnoreCase("true") || action.equalsIgnoreCase("false")
-                        || action.equalsIgnoreCase("toggle"))) {
-                    sender.sendMessage(ChatColor.RED + "Invalid syntax; correct syntax is: " + syntaxGuide);
+                if (!(action.equalsIgnoreCase("true") || action.equalsIgnoreCase("false"))) {
+                    sender.sendMessage(incorrectSyntaxMessage);
                     return false;
                 }
 
@@ -51,35 +54,35 @@ public class EnderTeleportCommand implements CommandExecutor {
                     boolean value;
                     try {
                         if (action.equalsIgnoreCase("true")) {
-                            EnderTeleport.setTrue(id);
+                            if (config.enderplayerIncludesEnderHands()) EnderHands.setTrue(id);
+                            if (config.enderplayerIncludesEnderTP()) EnderTeleport.setTrue(id);
                             value = true;
-                        } else if (action.equalsIgnoreCase("false")) {
-                            EnderTeleport.setFalse(id);
-                            value = false;
                         } else {
-                            value = EnderTeleport.toggle(id);
+                            if (config.enderplayerIncludesEnderHands()) EnderHands.setFalse(id);
+                            if (config.enderplayerIncludesEnderTP()) EnderTeleport.setFalse(id);
+                            value = false;
                         }
-                        if (value && giveTPStick) {
+                        if (value && giveTPStick && config.enderplayerIncludesEnderTP()) {
                             CommandUtils.givePlayerItem(p, tpStick);
                         }
                         if (!(target.equalsIgnoreCase("@a"))) {
-                            sender.sendMessage(String.format("%s's enderteleport value was set to %b", p.getName(), value));
+                            sender.sendMessage(String.format("%s's enderplayer value was set to %b", p.getName(), value));
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                         sender.sendMessage(ChatColor.RED +
-                                String.format("There was an error while updating %s's enderteleport value.", p.getName()));
+                                String.format("There was an error while updating %s's enderplayer value.", p.getName()));
                     }
                 }
 
                 if (target.equalsIgnoreCase("@a")) {
-                    sender.sendMessage("All online players' enderteleport values were updated.");
+                    sender.sendMessage("All online players' enderplayer values were updated.");
                 }
 
                 return targets.size() > 0;
 
             } else {
-                sender.sendMessage(ChatColor.RED + "Incorrect syntax; correct syntax is: " + syntaxGuide);
+                sender.sendMessage(incorrectSyntaxMessage);
             }
         }
 
