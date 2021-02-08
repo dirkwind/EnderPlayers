@@ -48,6 +48,7 @@ public class EnderTeleportListener implements Listener {
         Player p = event.getPlayer();
         if (EnderTeleport.getPlayer(p)) {
             RayTraceResult targetedBlock = getTargetBlock(event.getPlayer());
+            if (targetedBlock == null) return;
             Block b = targetedBlock.getHitBlock();
             UUID playerID = p.getUniqueId();
             World w = p.getWorld();
@@ -73,7 +74,6 @@ public class EnderTeleportListener implements Listener {
                         updateCooldown(p);
                     }
                 }
-
 
                 teleportParticleEffectAt(p);
 
