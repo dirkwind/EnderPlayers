@@ -2,6 +2,7 @@ package me.DirkWind.EnderPlayers.commands;
 
 import me.DirkWind.EnderPlayers.Main;
 import me.DirkWind.EnderPlayers.globals.Config;
+import me.DirkWind.EnderPlayers.globals.EnderEyes;
 import me.DirkWind.EnderPlayers.globals.EnderHands;
 import me.DirkWind.EnderPlayers.globals.EnderTeleport;
 import me.DirkWind.EnderPlayers.items.TPStickItem;
@@ -49,17 +50,23 @@ public class EnderPlayerCommand implements CommandExecutor {
                 boolean giveTPStick = Config.getInstance().getTPStickOnCommand();
                 ItemStack tpStick = TPStickItem.getInstance().getItem();
 
+                boolean includesEnderhands = config.enderplayerIncludesEnderHands();
+                boolean includesEnderTP = config.enderplayerIncludesEnderTP();
+                boolean includesEndereyes = config.enderplayerIncludesEndereyes();
+
                 for (Player p : targets) {
                     UUID id = p.getUniqueId();
                     boolean value;
                     try {
                         if (action.equalsIgnoreCase("true")) {
-                            if (config.enderplayerIncludesEnderHands()) EnderHands.setTrue(id);
-                            if (config.enderplayerIncludesEnderTP()) EnderTeleport.setTrue(id);
+                            if (includesEnderhands) EnderHands.setTrue(id);
+                            if (includesEnderTP) EnderTeleport.setTrue(id);
+                            if (includesEndereyes) EnderEyes.setTrue(id);
                             value = true;
                         } else {
-                            if (config.enderplayerIncludesEnderHands()) EnderHands.setFalse(id);
-                            if (config.enderplayerIncludesEnderTP()) EnderTeleport.setFalse(id);
+                            if (includesEnderhands) EnderHands.setFalse(id);
+                            if (includesEnderTP) EnderTeleport.setFalse(id);
+                            if (includesEndereyes) EnderEyes.setFalse(id);
                             value = false;
                         }
                         if (value && giveTPStick && config.enderplayerIncludesEnderTP()) {

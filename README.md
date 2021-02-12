@@ -16,7 +16,7 @@ so all help/criticism is welcome and appreciated!
 * **enderplayer**
     * **Function:** gives the specified target(s)'s every power in this plugin (or, rather, the ones specified in the config file)
     * **Description:** the enderplayers power is a culmination of every other power and is the closest a player can be to being an enderman
-    * **Syntax:** /enderplayer \<targets> {true|false|toggle}
+    * **Syntax:** /enderplayer \<targets> {true|false}
 * **enderhands**
     * **Function:** sets the value of the specified target(s)'s enderhands value
     * **Description:** the enderhands power causes all block mined without an item the player's main hand will drop as is 
@@ -28,6 +28,10 @@ so all help/criticism is welcome and appreciated!
       they look by pressing their interact button.
     * **Syntax:** /enderteleport \<targets> {true|false|toggle}
     * **Aliases:** /endertp
+* **endereyes**
+    * **Function:** sets the value of the specified target(s)'s endereyes value
+    * **Description:** the endereyes power allows a player to safely look at the eyes of endermen
+    * **Syntax:** /endereyes \<targets> {true|false|toggle}
 * **tpstick**
     * **Function:** gives the targeted players a TP Stick
     * **Description:** the TP Stick is detailed elsewhere
@@ -51,5 +55,5 @@ so all help/criticism is welcome and appreciated!
 
 * ~~add player teleportation feature~~ *(completed)*
 * add player water damage feature
-* add feature that allows enderplayers to safely look at the eyes of endermen
+* ~~add feature that allows enderplayers to safely look at the eyes of endermen~~ *(completed)*
 * ~~add config file for plugin customization~~ *(completed)*

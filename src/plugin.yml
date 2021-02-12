@@ -6,7 +6,7 @@ api-version: 1.16
 
 commands:
   enderplayer:
-    description: gives the target every enderman abilities (or, at least, the ones specified in the config file)
+    description: gives the target all enderman abilities (or, at least, the ones specified in the config file)
       available in this plugin
     usage: /enderplayer <targets> {true|false}
   enderhands:
@@ -24,3 +24,6 @@ commands:
   epreload:
     description: Reloads the data files for the EnderPlayers plugin.
     usage: /epreload
+  endereyes:
+    description: Gives the targeted players the endereye power, allowing them to stare at endermen without angering them
+    usage: /endereyes <targets> {true|false|toggle}

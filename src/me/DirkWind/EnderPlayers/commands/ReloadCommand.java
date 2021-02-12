@@ -2,6 +2,7 @@ package me.DirkWind.EnderPlayers.commands;
 
 import me.DirkWind.EnderPlayers.Main;
 import me.DirkWind.EnderPlayers.globals.Config;
+import me.DirkWind.EnderPlayers.globals.EnderEyes;
 import me.DirkWind.EnderPlayers.globals.EnderHands;
 import me.DirkWind.EnderPlayers.globals.EnderTeleport;
 import org.bukkit.ChatColor;
@@ -28,6 +29,7 @@ public class ReloadCommand implements CommandExecutor {
                 Config.getInstance().reload();
                 EnderTeleport.load();
                 EnderHands.load();
+                EnderEyes.load();
             } catch (IOException e) {
                 e.printStackTrace();
             }

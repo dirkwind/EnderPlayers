@@ -4,6 +4,7 @@ import me.DirkWind.EnderPlayers.commands.*;
 import me.DirkWind.EnderPlayers.globals.Config;
 import me.DirkWind.EnderPlayers.globals.EnderHands;
 import me.DirkWind.EnderPlayers.globals.EnderTeleport;
+import me.DirkWind.EnderPlayers.listeners.EnderEyeListener;
 import me.DirkWind.EnderPlayers.listeners.EnderHandListener;
 import me.DirkWind.EnderPlayers.listeners.EnderTeleportListener;
 import me.DirkWind.EnderPlayers.recipes.TPStickRecipe;
@@ -35,6 +36,10 @@ public class Main extends JavaPlugin {
         }
 
         new EnderPlayerCommand(this);
+
+        // endereyes stuff
+        new EnderEyeCommand(this);
+        new EnderEyeListener(this);
 
         // enderhands stuff
         new EnderHandCommand(this);

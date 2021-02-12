@@ -31,6 +31,7 @@ public class Config extends CMFile {
 
         addDefault("enderplayer.includes-endertp", true);
         addDefault("enderplayer.includes-enderhands", true);
+        addDefault("enderplayer.includes-endereyes", true);
 
         // enderteleport
 
@@ -56,10 +57,11 @@ public class Config extends CMFile {
         addComment("enderplayer", "Settings for the EnderPlayer command");
 
         addComment("enderplayer.includes-endertp", "The following values determine whether or not a power"
-                + " is granted to the targets when the command is executed.\nSee the endertp section to edit related settings.");
+                + " is granted to the targets when the /enderplayer command is executed.\nSee the endertp section to edit related settings.");
         addComment("enderplayer.includes-enderhands", "See the enderhands section to edit related settings.");
+        addComment("enderplayer.includes-endereyes", "This power has no settings.");
 
-                // enderteleport
+        // enderteleport
 
         addComment("endertp", "Settings related to EnderTeleportation");
 
@@ -121,6 +123,10 @@ public class Config extends CMFile {
         return getConfig().getBoolean("enderplayer.includes-enderhands");
     }
 
+    public boolean enderplayerIncludesEndereyes() {
+        return getConfig().getBoolean("enderplayer.includes-endereyes");
+    }
+
     public String getTPCooldownMessage() {
         String rawText = getConfig().getString("endertp.cooldown-message");
         if (rawText == null) return "";
@@ -159,7 +165,6 @@ public class Config extends CMFile {
                 // do nothing
             }
         }
-        System.out.println(blacklist);
         return blacklist;
     }
 

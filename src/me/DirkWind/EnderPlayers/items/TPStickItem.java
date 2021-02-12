@@ -1,14 +1,10 @@
 package me.DirkWind.EnderPlayers.items;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import me.DirkWind.EnderPlayers.globals.Config;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Hash;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
