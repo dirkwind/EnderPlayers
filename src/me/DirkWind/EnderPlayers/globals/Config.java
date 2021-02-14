@@ -42,19 +42,20 @@ public class Config extends CMFile {
         addDefault("endertp.play-sounds", true);
         addDefault("endertp.show-particles", true);
         addDefault("endertp.fall-damage", false);
+        addDefault("endertp.blocks-arrows", true);
         addDefault("endertp.tp-stick.give-on-command", true);
         addDefault("endertp.tp-stick.name", "&6&lTP Stick");
         addDefault("endertp.tp-stick.lore", "&o&5Allows you to teleport provided you have the enderteleport power.");
-
-        // enderhands
-
-        addDefault("enderhands.whitelist-blocks", false);
-        addDefault("enderhands.block-blacklist", new ArrayList<>(Arrays.asList("BEDROCK", "BARRIER")));
 
         // enderwater
 
         addDefault("enderwater.helmets-block-rain", true);
         addDefault("enderwater.full-armor-blocks-water", true);
+
+        // enderhands
+
+        addDefault("enderhands.whitelist-blocks", false);
+        addDefault("enderhands.block-blacklist", new ArrayList<>(Arrays.asList("BEDROCK", "BARRIER")));
 
         /* ---------- COMMENTS ---------- */
 
@@ -80,12 +81,23 @@ public class Config extends CMFile {
         addComment("endertp.show-particles", "Determines whether or not particles appear when players teleport.");
         addComment("endertp.fall-damage", "Determines whether or not a player will take fall damage when teleporting"
                 + "\nIf set to true, players will take the amount of fall damage relative to the number of blocks they've fallen before teleporting.");
+        addComment("endertp.blocks-arrows", "Determines whether or not players with the endertp power will be hit by arrows.");
         addComment("endertp.tp-stick", "Settings for the TP Stick item.");
         addComment("endertp.tp-stick.give-on-command", "Determines whether or not the enderteleport command will give targeted players a TP Stick"
                 +"\nIf false, players will have to craft the TP Stick on their own or receive it by other means.");
         addComment("endertp.tp-stick.name", "The name of the TP Stick given to players when they receive the enderteleport power.");
         addComment("endertp.tp-stick.lore", "The lore of the TP Stick given to players when they receive the enderteleport power."
                 + "\nUse newline characters (\\n) to create a new line in the lore.");
+
+        // enderwater
+        addComment("enderwater", "Settings related to EnderWater. \nNote that EnderWater determines whether or not a player takes damage when in water.");
+
+
+        addComment("enderwater.helmets-block-rain", "If true, players with the enderwater power will not take" +
+                " damage from the rain while wearing any helmet.");
+        addComment("enderwater.full-armor-blocks-water", "If true, players with the enderwater power will not take" +
+                " any water damage when in full armor. \nNote that, if true, this will also enable helmets block rain " +
+                "(since it wouldn't make sense that armor protects you when submerged but not in the rain).");
 
         // enderhands
 
@@ -97,15 +109,7 @@ public class Config extends CMFile {
                 + "\nIf whitelist-blocks is true, the listed blocks will be the only blocks affected by the enderhands power."
                 + "\nGo to https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html for a list of block names.");
 
-        // enderwater
-        addComment("enderwater", "Settings related to EnderWater. \nNote that EnderWater determines whether or not a player takes damage when in water.");
 
-
-        addComment("enderwater.helmets-block-rain", "If true, players with the enderwater power will not take" +
-                " damage from the rain while wearing any helmet.");
-        addComment("enderwater.full-armor-blocks-water", "If true, players with the enderwater power will not take" +
-                " any water damage when in full armor. \nNote that, if true, this will also enable helmets block rain " +
-                "(since it wouldn't make sense that armor protects you when submerged but not in the rain).");
     }
 
     public double getTPCooldown() {
@@ -154,6 +158,10 @@ public class Config extends CMFile {
 
     public boolean getFullArmorBlocksWater() {
         return getConfig().getBoolean("enderwater.full-armor-blocks-water");
+    }
+
+    public boolean getEnderTPBlocksArrows() {
+        return getConfig().getBoolean("endertp.blocks-arrows");
     }
 
     public String getTPCooldownMessage() {

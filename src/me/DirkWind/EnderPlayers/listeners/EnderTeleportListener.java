@@ -8,10 +8,12 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.RayTraceResult;
 
@@ -41,6 +43,11 @@ public class EnderTeleportListener implements Listener {
     private void teleportParticleEffectAt(Player p) {
         if (config.getShowTPParticles()) p.getWorld().spawnParticle(Particle.PORTAL,
                 p.getLocation().add(0, 1, 0), 150, 0.2, 0.5, 0.2, 0.25);
+    }
+
+    private void playTeleportSoundAt(Player p, float volume) {
+        if (config.getPlayTPSounds()) p.getWorld().playSound(p.getLocation().add(0.5, 1, 0.5),
+                Sound.ENTITY_ENDERMAN_TELEPORT, volume, 0.5f);
     }
 
     @EventHandler
@@ -93,13 +100,23 @@ public class EnderTeleportListener implements Listener {
                 p.teleport(loc);
                 teleportParticleEffectAt(p);
 
-                if (config.getPlayTPSounds()) w.playSound(p.getLocation().add(0.5, 1, 0.5),
-                        Sound.ENTITY_ENDERMAN_TELEPORT, 0.7f, 0.5f);
+                playTeleportSoundAt(p, 0.7f);
             }
         }
 
     }
 
-
-
+    @EventHandler
+    public void onPlayerDamagedByArrow(final EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player) {
+            if (event.getDamager() instanceof Arrow) {
+                Player p = (Player) event.getEntity();
+                if (EnderTeleport.getPlayer(p) && config.getEnderTPBlocksArrows()) {
+                    event.setCancelled(true);
+                    playTeleportSoundAt(p, 0.15f);
+                    teleportParticleEffectAt(p);
+                }
+            }
+        }
+    }
 }
