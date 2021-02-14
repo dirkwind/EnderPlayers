@@ -32,6 +32,10 @@ so all help/criticism is welcome and appreciated!
     * **Function:** sets the value of the specified target(s)'s endereyes value
     * **Description:** the endereyes power allows a player to safely look at the eyes of endermen
     * **Syntax:** /endereyes \<targets> {true|false|toggle}
+* **enderwater**
+    * **Fucntion:** sets the value of the specified target(s)'s enderwater value
+    * **Description:** the enderwater power (though not really a power) causes players to take damage when in contact with water
+    * **Syntax:** /enderwater <targets> {true|false|toggle}
 * **tpstick**
     * **Function:** gives the targeted players a TP Stick
     * **Description:** the TP Stick is detailed elsewhere
@@ -54,6 +58,6 @@ so all help/criticism is welcome and appreciated!
 **Note:** The exact time in which these will be completed has not been determined.
 
 * ~~add player teleportation feature~~ *(completed)*
-* add player water damage feature
+* ~~add player water damage feature~~ *(completed)*
 * ~~add feature that allows enderplayers to safely look at the eyes of endermen~~ *(completed)*
 * ~~add config file for plugin customization~~ *(completed)*

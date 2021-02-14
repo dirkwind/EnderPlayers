@@ -1,10 +1,7 @@
 package me.DirkWind.EnderPlayers.commands;
 
 import me.DirkWind.EnderPlayers.Main;
-import me.DirkWind.EnderPlayers.globals.Config;
-import me.DirkWind.EnderPlayers.globals.EnderEyes;
-import me.DirkWind.EnderPlayers.globals.EnderHands;
-import me.DirkWind.EnderPlayers.globals.EnderTeleport;
+import me.DirkWind.EnderPlayers.globals.*;
 import me.DirkWind.EnderPlayers.items.TPStickItem;
 import me.DirkWind.EnderPlayers.utils.CommandUtils;
 import org.bukkit.ChatColor;
@@ -53,6 +50,7 @@ public class EnderPlayerCommand implements CommandExecutor {
                 boolean includesEnderhands = config.enderplayerIncludesEnderHands();
                 boolean includesEnderTP = config.enderplayerIncludesEnderTP();
                 boolean includesEndereyes = config.enderplayerIncludesEndereyes();
+                boolean includesEnderwater = config.enderplayerIncludesEnderwater();
 
                 for (Player p : targets) {
                     UUID id = p.getUniqueId();
@@ -62,11 +60,13 @@ public class EnderPlayerCommand implements CommandExecutor {
                             if (includesEnderhands) EnderHands.setTrue(id);
                             if (includesEnderTP) EnderTeleport.setTrue(id);
                             if (includesEndereyes) EnderEyes.setTrue(id);
+                            if (includesEnderwater) EnderWater.setTrue(id);
                             value = true;
                         } else {
                             if (includesEnderhands) EnderHands.setFalse(id);
                             if (includesEnderTP) EnderTeleport.setFalse(id);
                             if (includesEndereyes) EnderEyes.setFalse(id);
+                            if (includesEnderwater) EnderWater.setFalse(id);
                             value = false;
                         }
                         if (value && giveTPStick && config.enderplayerIncludesEnderTP()) {

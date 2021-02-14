@@ -32,6 +32,7 @@ public class Config extends CMFile {
         addDefault("enderplayer.includes-endertp", true);
         addDefault("enderplayer.includes-enderhands", true);
         addDefault("enderplayer.includes-endereyes", true);
+        addDefault("enderplayer.includes-enderwater", true);
 
         // enderteleport
 
@@ -50,6 +51,11 @@ public class Config extends CMFile {
         addDefault("enderhands.whitelist-blocks", false);
         addDefault("enderhands.block-blacklist", new ArrayList<>(Arrays.asList("BEDROCK", "BARRIER")));
 
+        // enderwater
+
+        addDefault("enderwater.helmets-block-rain", true);
+        addDefault("enderwater.full-armor-blocks-water", true);
+
         /* ---------- COMMENTS ---------- */
 
         // enderplayer
@@ -60,6 +66,7 @@ public class Config extends CMFile {
                 + " is granted to the targets when the /enderplayer command is executed.\nSee the endertp section to edit related settings.");
         addComment("enderplayer.includes-enderhands", "See the enderhands section to edit related settings.");
         addComment("enderplayer.includes-endereyes", "This power has no settings.");
+        addComment("enderplayer.includes-enderwater", "See the enderwater section to edit related settings.");
 
         // enderteleport
 
@@ -89,6 +96,16 @@ public class Config extends CMFile {
                 "If whitelist-blocks is false, the listed blocks will not be affected by the enderhands power."
                 + "\nIf whitelist-blocks is true, the listed blocks will be the only blocks affected by the enderhands power."
                 + "\nGo to https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html for a list of block names.");
+
+        // enderwater
+        addComment("enderwater", "Settings related to EnderWater. \nNote that EnderWater determines whether or not a player takes damage when in water.");
+
+
+        addComment("enderwater.helmets-block-rain", "If true, players with the enderwater power will not take" +
+                " damage from the rain while wearing any helmet.");
+        addComment("enderwater.full-armor-blocks-water", "If true, players with the enderwater power will not take" +
+                " any water damage when in full armor. \nNote that, if true, this will also enable helmets block rain " +
+                "(since it wouldn't make sense that armor protects you when submerged but not in the rain).");
     }
 
     public double getTPCooldown() {
@@ -125,6 +142,18 @@ public class Config extends CMFile {
 
     public boolean enderplayerIncludesEndereyes() {
         return getConfig().getBoolean("enderplayer.includes-endereyes");
+    }
+
+    public boolean enderplayerIncludesEnderwater() {
+        return getConfig().getBoolean("enderplayer.includes-enderwater");
+    }
+
+    public boolean getHelmetsBlockRain() {
+        return getConfig().getBoolean("enderwater.helmets-block-rain");
+    }
+
+    public boolean getFullArmorBlocksWater() {
+        return getConfig().getBoolean("enderwater.full-armor-blocks-water");
     }
 
     public String getTPCooldownMessage() {

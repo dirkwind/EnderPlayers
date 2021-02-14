@@ -7,6 +7,7 @@ import me.DirkWind.EnderPlayers.globals.EnderTeleport;
 import me.DirkWind.EnderPlayers.listeners.EnderEyeListener;
 import me.DirkWind.EnderPlayers.listeners.EnderHandListener;
 import me.DirkWind.EnderPlayers.listeners.EnderTeleportListener;
+import me.DirkWind.EnderPlayers.listeners.EnderWaterListener;
 import me.DirkWind.EnderPlayers.recipes.TPStickRecipe;
 import me.DirkWind.EnderPlayers.tab_completers.EnderCommandsTabCompleter;
 import org.bukkit.ChatColor;
@@ -36,6 +37,10 @@ public class Main extends JavaPlugin {
         }
 
         new EnderPlayerCommand(this);
+
+        // enderwater stuff
+        new EnderWaterCommand(this);
+        new EnderWaterListener(this);
 
         // endereyes stuff
         new EnderEyeCommand(this);

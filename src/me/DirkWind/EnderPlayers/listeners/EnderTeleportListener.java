@@ -34,7 +34,7 @@ public class EnderTeleportListener implements Listener {
     }
 
     private RayTraceResult getTargetBlock(Player p) {
-        return p.getWorld().rayTraceBlocks(p.getLocation().add(0.5, 1.6875, 0.5), p.getLocation().getDirection(),
+        return p.getWorld().rayTraceBlocks(p.getLocation().add(0, 1.6875, 0), p.getLocation().getDirection(),
                 config.getMaxTpDistance(), FluidCollisionMode.NEVER, true);
     }
 

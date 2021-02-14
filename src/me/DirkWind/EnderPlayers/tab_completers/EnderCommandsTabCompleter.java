@@ -21,6 +21,7 @@ public class EnderCommandsTabCompleter implements TabCompleter {
         this.plugin.getCommand("tpstick").setTabCompleter(this);
         this.plugin.getCommand("enderplayer").setTabCompleter(this);
         this.plugin.getCommand("endereyes").setTabCompleter(this);
+        this.plugin.getCommand("enderwater").setTabCompleter(this);
     }
 
     @Override

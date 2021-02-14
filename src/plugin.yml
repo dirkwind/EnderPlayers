@@ -1,6 +1,6 @@
 main: me.DirkWind.EnderPlayers.Main
 name: EnderPlayers
-version: 0.1.1
+version: 1.0
 author: DirkWind
 api-version: 1.16
 
@@ -18,6 +18,10 @@ commands:
       they look.
     usage: /enderteleport <targets> {true|false|toggle}
     aliases: [endertp]
+  enderwater:
+    description: Sets a player's enderwater value. A value of true means that the player will take damage in water like
+      an enderman
+    usage: /enderwater <targets> {true|false|toggle}
   tpstick:
     description: Gives the TP Stick item to the specified targets
     usage: /tpstick <targets>
