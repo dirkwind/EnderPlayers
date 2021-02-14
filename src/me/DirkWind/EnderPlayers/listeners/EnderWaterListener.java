@@ -40,9 +40,10 @@ public class EnderWaterListener implements Runnable, Listener {
 
     @Override
     public void run() {
-        for (Player p : plugin.getServer().getWorlds().get(0).getPlayers()) {
+        for (Player p : plugin.getServer().getOnlinePlayers()) {
             if (EnderWater.getPlayer(p)) {
                 World w = p.getWorld();
+                if (w.getEnvironment() == World.Environment.NETHER) return;
                 Location loc = p.getLocation();
 
                 // check if player is being rained on
